@@ -1,0 +1,7 @@
+## Análisis de Violaciones SOLID
+
+| Principio |                    Método/Sección afectada                           |     Descripción de la violación          |
+|-----------|----------------------------------------------------------------------|------------------------------------------|
+|    SRP    | calculateTotal + applyDiscount + saveOrder + sendEmail + printReport | La clase OrderProcessor tiene múltiples responsabilidades: cálculo de totales, aplicación de descuentos, persistencia de órdenes, envío de notificaciones y generación de reportes. Esto viola el principio de responsabilidad única, ya que una clase debería tener un solo motivo de cambio.       |
+|    OCP    | applyDiscount (if/else sobre customerType)                           | El método aplica descuentos usando condicionales basados en el tipo de cliente. Si se agregan nuevos tipos de clientes o reglas de descuento, el método debe modificarse, lo cual viola el principio de abierto/cerrado.                                                                   |
+|    DIP    | Toda la clase                                                        | La clase depende directamente de implementaciones concretas como System.out y la estructura interna de almacenamiento de órdenes. No utiliza abstracciones ni interfaces, lo que genera alto acoplamiento y dificulta la extensión o el reemplazo de componentes.                           |
